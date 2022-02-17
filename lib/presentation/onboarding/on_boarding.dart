@@ -1,3 +1,5 @@
+import 'package:architeture_project/presentation/resources/color_manager.dart';
+import 'package:architeture_project/presentation/resources/styles_manager.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -10,6 +12,11 @@ class OnBoardingView extends StatefulWidget {
 class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: ColorManager.error,
+      body: Center(
+          child: Text("Welcome",
+              style: getRegularTextStyle(color: ColorManager.white))),
+    );
   }
 }

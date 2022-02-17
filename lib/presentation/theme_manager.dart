@@ -50,7 +50,16 @@ ThemeData getApplicationTheme() {
         ),
       ),
     ),
+
     //  text      theme
+    textTheme: TextTheme(
+      headline1: getSemiBoldTextStyle(
+          color: ColorManager.darkGrey, fontSize: FontSize.s16),
+      subtitle1: getMediumTextStyle(
+          color: ColorManager.lightGrey, fontSize: FontSize.s14),
+      caption: getRegularTextStyle(color: ColorManager.grey1),
+      bodyText2: getRegularTextStyle(color: ColorManager.grey),
+    ),
     //  input decoration theme(text from field)
   );
 }

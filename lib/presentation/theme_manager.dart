@@ -1,4 +1,5 @@
 import 'package:architeture_project/presentation/color_manager.dart';
+import 'package:architeture_project/presentation/values_manager.dart';
 import 'package:flutter/material.dart';
 
 ThemeData getApplicationTheme() {
@@ -7,11 +8,16 @@ ThemeData getApplicationTheme() {
     primaryColor: ColorManager.primary,
     primaryColorDark: ColorManager.darkPrimary,
     primaryColorLight: ColorManager.primaryOpacity70,
-    disabledColor: ColorManager.grey1, //button
+    disabledColor: ColorManager.grey1, //ex. button
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: ColorManager.grey,
     ),
     //  card view theme
+    cardTheme: CardTheme(
+      color: ColorManager.white,
+      shadowColor: ColorManager.grey,
+      elevation: AppSize.s4,
+    ),
     //  app bar   theme
     //  button    theme
     //  text      theme

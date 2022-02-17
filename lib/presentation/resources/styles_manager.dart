@@ -1,4 +1,4 @@
-import 'package:architeture_project/presentation/font_manager.dart';
+import 'package:architeture_project/presentation/resources/font_manager.dart';
 import 'package:flutter/cupertino.dart';
 
 TextStyle _getTextStyle(

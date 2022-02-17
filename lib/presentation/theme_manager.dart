@@ -15,12 +15,14 @@ ThemeData getApplicationTheme() {
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: ColorManager.grey,
     ),
+
     //  card view theme
     cardTheme: CardTheme(
       color: ColorManager.white,
       shadowColor: ColorManager.grey,
       elevation: AppSize.s4,
     ),
+
     //  app bar   theme
     appBarTheme: AppBarTheme(
       centerTitle: true,
@@ -32,6 +34,22 @@ ThemeData getApplicationTheme() {
     ),
 
     //  button    theme
+    buttonTheme: ButtonThemeData(
+      buttonColor: ColorManager.primary,
+      splashColor: ColorManager.primaryOpacity70,
+      disabledColor: ColorManager.grey1,
+      shape: const StadiumBorder(),
+    ),
+    // elevated b theme
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        textStyle: getRegularTextStyle(color: ColorManager.white),
+        primary: ColorManager.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s12),
+        ),
+      ),
+    ),
     //  text      theme
     //  input decoration theme(text from field)
   );

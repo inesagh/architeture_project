@@ -8,9 +8,10 @@ class OnBoardingViewModel extends BaseViewModel
   //stream controller
   final StreamController _controller = StreamController<SliderViewObject>();
 
+  //INPUTS
   @override
   void dispose() {
-    // TODO: implement dispose
+    _controller.close();
   }
 
   @override
@@ -34,13 +35,12 @@ class OnBoardingViewModel extends BaseViewModel
   }
 
   @override
-  // TODO: implement inputSliderViewObject
-  Sink get inputSliderViewObject => throw UnimplementedError();
+  Sink get inputSliderViewObject => _controller.sink;
 
+  //OUTPUTS
   @override
-  // TODO: implement outputSliderViewObject
   Stream<SliderViewObject> get outputSliderViewObject =>
-      throw UnimplementedError();
+      _controller.stream.map((sliderViewObject) => sliderViewObject);
 }
 
 abstract class OnBoardingViewModelInputs {

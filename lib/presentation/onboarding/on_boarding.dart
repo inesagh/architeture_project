@@ -33,6 +33,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       ];
 
   @override
+  void dispose() {
+    // TODO: viewmodel.dispose()
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.white,

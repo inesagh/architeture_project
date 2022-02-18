@@ -23,13 +23,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
   List<SliderObject> _getSliderData() => [
         SliderObject(AppStrings.onBoardingTitle1,
-            AppStrings.onBoardingSubTitle1, ImageAssets.onBoardingLogo1),
+            AppStrings.onBoardingsubtitle1, ImageAssets.onBoardingLogo1),
         SliderObject(AppStrings.onBoardingTitle2,
-            AppStrings.onBoardingSubTitle2, ImageAssets.onBoardingLogo2),
+            AppStrings.onBoardingsubtitle2, ImageAssets.onBoardingLogo2),
         SliderObject(AppStrings.onBoardingTitle3,
-            AppStrings.onBoardingSubTitle3, ImageAssets.onBoardingLogo3),
+            AppStrings.onBoardingsubtitle3, ImageAssets.onBoardingLogo3),
         SliderObject(AppStrings.onBoardingTitle4,
-            AppStrings.onBoardingSubTitle4, ImageAssets.onBoardingLogo4),
+            AppStrings.onBoardingsubtitle4, ImageAssets.onBoardingLogo4),
       ];
 
   @override

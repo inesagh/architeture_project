@@ -25,7 +25,7 @@ class OnBoardingPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(AppPadding.p8),
           child: Text(
-            sliderObject.subTitle,
+            sliderObject.subtitle,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.subtitle1,
           ),

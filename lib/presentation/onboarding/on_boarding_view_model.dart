@@ -1,7 +1,13 @@
+import 'dart:async';
+
+import 'package:architeture_project/domain/model.dart';
 import 'package:architeture_project/presentation/base/base_view_model.dart';
 
 class OnBoardingViewModel extends BaseViewModel
     with OnBoardingViewModelInputs, OnBoardingViewModelOutputs {
+  //stream controller
+  final StreamController _controller = StreamController<SliderViewObject>();
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -18,7 +24,7 @@ class OnBoardingViewModel extends BaseViewModel
   }
 
   @override
-  void onPageChanged() {
+  void onPageChanged(int index) {
     // TODO: implement onPageChanged
   }
 
@@ -26,12 +32,33 @@ class OnBoardingViewModel extends BaseViewModel
   void start() {
     // TODO: implement start
   }
+
+  @override
+  // TODO: implement inputSliderViewObject
+  Sink get inputSliderViewObject => throw UnimplementedError();
+
+  @override
+  // TODO: implement outputSliderViewObject
+  Stream<SliderViewObject> get outputSliderViewObject =>
+      throw UnimplementedError();
 }
 
 abstract class OnBoardingViewModelInputs {
   void goNext();
   void goPrevious();
-  void onPageChanged();
+  void onPageChanged(int index);
+
+  Sink get inputSliderViewObject; //for getting SliderViewObject
 }
 
-abstract class OnBoardingViewModelOutputs {}
+abstract class OnBoardingViewModelOutputs {
+  Stream<SliderViewObject> get outputSliderViewObject;
+}
+
+class SliderViewObject {
+  SliderObject sliderObject;
+  int numberOfSlides;
+  int currentIndex;
+
+  SliderViewObject(this.sliderObject, this.numberOfSlides, this.currentIndex);
+}

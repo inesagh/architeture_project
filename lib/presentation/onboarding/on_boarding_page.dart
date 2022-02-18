@@ -1,4 +1,4 @@
-import 'package:architeture_project/presentation/onboarding/slider_object.dart';
+import 'package:architeture_project/domain/model.dart';
 import 'package:architeture_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

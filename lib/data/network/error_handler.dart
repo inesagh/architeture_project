@@ -1,3 +1,5 @@
+import 'package:architeture_project/data/network/failure.dart';
+
 enum DataSource {
   SUCCESS,
   NO_CONTENT,
@@ -6,13 +8,49 @@ enum DataSource {
   UNAUTHORISED,
   NOT_FOUND,
   INTERNAL_SERVER_ERROR,
-  UNKNOWN,
   CONNECT_TIMEOUT,
   CANCEL,
   RECEIVE_TIMEOUT,
   SEND_TIMEOUT,
   CACHE_ERROR,
   NO_INTERNET_CONNECTION
+}
+
+extension DataSourceExtension on DataSource {
+  Failure getFailure() {
+    switch (this) {
+      case DataSource.BAD_REQUEST:
+        return Failure(ResponseCode.BAD_REQUEST, ResponseMessages.BAD_REQUEST);
+      case DataSource.FORBIDDEN:
+        return Failure(ResponseCode.FORBIDDEN, ResponseMessages.FORBIDDEN);
+      case DataSource.UNAUTHORISED:
+        return Failure(
+            ResponseCode.UNAUTHORISED, ResponseMessages.UNAUTHORISED);
+      case DataSource.NOT_FOUND:
+        return Failure(ResponseCode.NOT_FOUND, ResponseMessages.NOT_FOUND);
+      case DataSource.INTERNAL_SERVER_ERROR:
+        return Failure(ResponseCode.INTERNAL_SERVER_ERROR,
+            ResponseMessages.INTERNAL_SERVER_ERROR);
+      case DataSource.CONNECT_TIMEOUT:
+        return Failure(
+            ResponseCode.CONNECT_TIMEOUT, ResponseMessages.CONNECT_TIMEOUT);
+      case DataSource.CANCEL:
+        return Failure(ResponseCode.CANCEL, ResponseMessages.CANCEL);
+      case DataSource.RECEIVE_TIMEOUT:
+        return Failure(
+            ResponseCode.RECEIVE_TIMEOUT, ResponseMessages.RECEIVE_TIMEOUT);
+      case DataSource.SEND_TIMEOUT:
+        return Failure(
+            ResponseCode.SEND_TIMEOUT, ResponseMessages.SEND_TIMEOUT);
+      case DataSource.CACHE_ERROR:
+        return Failure(ResponseCode.CACHE_ERROR, ResponseMessages.CACHE_ERROR);
+      case DataSource.NO_INTERNET_CONNECTION:
+        return Failure(ResponseCode.NO_INTERNET_CONNECTION,
+            ResponseMessages.NO_INTERNET_CONNECTION);
+      default:
+        return Failure(ResponseCode.UNKNOWN, ResponseMessages.UNKNOWN);
+    }
+  }
 }
 
 class ResponseCode {

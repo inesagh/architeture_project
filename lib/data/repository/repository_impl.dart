@@ -1,5 +1,6 @@
 import 'package:architeture_project/data/datasource/remote_data_source.dart';
 import 'package:architeture_project/data/mapper/mapper.dart';
+import 'package:architeture_project/data/network/error_handler.dart';
 import 'package:architeture_project/data/network/failure.dart';
 import 'package:architeture_project/data/network/network_info.dart';
 
@@ -21,16 +22,25 @@ class RepositoryImpl implements Repository {
   Future<Either<Failure, Authentication>> login(
       LoginRequest loginRequest) async {
     if (await _networkInfo.isConnected) {
-      final response = await _remoteDataSource.login(loginRequest);
+      try {
+        final response = await _remoteDataSource.login(loginRequest);
 
-      if (response.status == 0) {
-        return Right(response.toDomain());
-      } else {
-        return Left(Failure(409,
-            response.message ?? "smth has gone wrong in our business logic"));
+        if (response.status == ApiInternalStatus.SUCCESS) {
+          return Right(response.toDomain());
+        } else {
+          return Left(Failure(response.status ?? ApiInternalStatus.FAILURE,
+              response.message ?? ResponseMessages.DEFAULT));
+        }
+      } catch (error) {
+        return Left(ErrorHandler.handle(error).failure);
       }
     } else {
-      return Left(Failure(501, "please, check your internet connection"));
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }
+}
+
+class ApiInternalStatus {
+  static const int SUCCESS = 0;
+  static const int FAILURE = 1;
 }

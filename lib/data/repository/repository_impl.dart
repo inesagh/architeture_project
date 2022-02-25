@@ -6,11 +6,11 @@ import 'package:architeture_project/data/network/network_info.dart';
 
 import 'package:architeture_project/data/requests/requests.dart';
 
-import 'package:architeture_project/domain/model.dart';
+import 'package:architeture_project/domain/model/model.dart';
 
 import 'package:dartz/dartz.dart';
 
-import '../../domain/repository.dart';
+import '../../domain/repository/repository.dart';
 
 class RepositoryImpl implements Repository {
   final NetworkInfo _networkInfo;

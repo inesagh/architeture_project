@@ -1,7 +1,7 @@
 //response - (null checking) - model
 
 import 'package:architeture_project/data/responses/responses.dart';
-import 'package:architeture_project/domain/model.dart';
+import 'package:architeture_project/domain/model/model.dart';
 import 'package:architeture_project/app/extensions.dart';
 
 const EMPTY = "";

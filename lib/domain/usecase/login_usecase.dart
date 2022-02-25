@@ -1,3 +1,4 @@
+import 'package:architeture_project/app/functions.dart';
 import 'package:architeture_project/data/network/failure.dart';
 import 'package:architeture_project/data/requests/requests.dart';
 import 'package:architeture_project/domain/model/model.dart';
@@ -13,8 +14,10 @@ class LoginUseCase implements BaseUseCase<LoginUseCaseInput, Authentication> {
   @override
   Future<Either<Failure, Authentication>> execute(
       LoginUseCaseInput input) async {
-    return await _repository
-        .login(LoginRequest(input.email, input.password, "imei", "deviceType"));
+    DeviceInfo deviceInfo = await getDeviceDetails();
+
+    return await _repository.login(LoginRequest(
+        input.email, input.password, deviceInfo.identifier, deviceInfo.name));
   }
 }
 

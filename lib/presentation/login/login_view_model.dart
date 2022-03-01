@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:architeture_project/presentation/base/base_view_model.dart';
 
+import '../common/freezed_data_classes.dart';
+
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
   final StreamController _usernameStreamController =
@@ -37,11 +39,15 @@ class LoginViewModel extends BaseViewModel
   @override
   setPassword(String password) {
     inputPassword.add(password);
+    loginObject = loginObject.copyWith(
+        password: password); //data class operation same as kotlin
   }
 
   @override
   setUsername(String username) {
     inputUsername.add(username);
+    loginObject = loginObject.copyWith(
+        username: username); //data class operation same as kotlin
   }
 
   //OUTPUTS

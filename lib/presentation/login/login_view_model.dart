@@ -15,7 +15,7 @@ class LoginViewModel extends BaseViewModel
   var loginObject = LoginObject("",
       ""); //when user can make typos and change smth. (data classes)   freezed pkg.
 
-  LoginUseCase _loginUseCase;
+  LoginUseCase? _loginUseCase; //TODO remove nullable
 
   LoginViewModel(this._loginUseCase);
 
@@ -26,7 +26,9 @@ class LoginViewModel extends BaseViewModel
   }
 
   @override
-  void start() {}
+  void start() {
+    //  TODO implement
+  }
 
   //INPUTS
   @override
@@ -37,9 +39,9 @@ class LoginViewModel extends BaseViewModel
 
   @override
   login() async {
-    (await _loginUseCase.execute(
+    (await _loginUseCase?.execute(
             LoginUseCaseInput(loginObject.username, loginObject.password)))
-        .fold(
+        ?.fold(
             (failure) => {
                   //      left -> failure
                   print(failure.message)
@@ -48,7 +50,6 @@ class LoginViewModel extends BaseViewModel
                   // right -> success (data)
                   print(data.customer?.name)
                 });
-
     //      fold closure, either
   }
 

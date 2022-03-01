@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:architeture_project/domain/usecase/login_usecase.dart';
 import 'package:architeture_project/presentation/base/base_view_model.dart';
 
 import '../common/freezed_data_classes.dart';
@@ -13,6 +14,10 @@ class LoginViewModel extends BaseViewModel
 
   var loginObject = LoginObject("",
       ""); //when user can make typos and change smth. (data classes)   freezed pkg.
+
+  LoginUseCase _loginUseCase;
+
+  LoginViewModel(this._loginUseCase);
 
   @override
   void dispose() {
@@ -31,9 +36,20 @@ class LoginViewModel extends BaseViewModel
   Sink get inputUsername => _usernameStreamController.sink;
 
   @override
-  login() {
-    // TODO: implement login
-    throw UnimplementedError();
+  login() async {
+    (await _loginUseCase.execute(
+            LoginUseCaseInput(loginObject.username, loginObject.password)))
+        .fold(
+            (failure) => {
+                  //      left -> failure
+                  print(failure.message)
+                },
+            (data) => {
+                  // right -> success (data)
+                  print(data.customer?.name)
+                });
+
+    //      fold closure, either
   }
 
   @override

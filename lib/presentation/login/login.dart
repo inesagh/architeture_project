@@ -16,7 +16,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final LoginViewModel _viewModel =
-  LoginViewModel(null); //TODO pass here loginusecase
+      LoginViewModel(null); //TODO pass here loginusecase
 
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -110,11 +110,13 @@ class _LoginViewState extends State<LoginView> {
                     left: AppPadding.p28,
                     right: AppPadding.p28,
                   ),
-                  child: StreamBuilder(
-                    stream:, //TODO add me later
+                  child: StreamBuilder<bool>(
+                    stream: _viewModel.outputIsAllInputsValid,
                     builder: (context, snapshot) {
                       return ElevatedButton(
-                        onPressed: () {},
+                        onPressed: (snapshot.data ?? false)
+                            ? () => _viewModel.login()
+                            : null,
                         child: Text(AppStrings.login),
                       );
                     },
